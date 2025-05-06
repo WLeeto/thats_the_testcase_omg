@@ -21,7 +21,7 @@ def subscribe(message: telebot.types.Message) -> None:
     Если уже подписан — обновляет никнейм.
     :param message: объект сообщения Telegram
     """
-    chat_id = message.chat.id
+    chat_id = message.from_user.id
     nickname = message.from_user.username or ""
     try:
         Subscriber.objects.create(chat_id=chat_id, nickname=nickname)
@@ -36,7 +36,7 @@ def unsubscribe(message: telebot.types.Message) -> None:
     Обрабатывает команду /stop: отписывает пользователя от уведомлений.
     :param message: объект сообщения Telegram
     """
-    chat_id = message.chat.id
+    chat_id = message.from_user.id
     deleted, _ = Subscriber.objects.filter(chat_id=chat_id).delete()
     if deleted:
         bot.send_message(chat_id, "Вы отписались от уведомлений.")

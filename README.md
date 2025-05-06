@@ -98,12 +98,16 @@ POSTGRES_PASSWORD=postgres
 POSTGRES_HOST=db
 POSTGRES_PORT=5432
 TELEGRAM_BOT_TOKEN=123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
+
+DJANGO_SECRET_KEY=тут ключик джанги
+DJANGO_SETTINGS_MODULE=admin_notifier.settings
+DEBUGMODE=True
 ```
 
 ---
 
 ## Как это работает
-1. Любой пользователь пишет боту `/start` — его chat_id и username сохраняются в базе.
+1. Любой пользователь пишет боту `/start` — его id и username сохраняются в базе.
 2. При каждом успешном входе в Django admin срабатывает сигнал, который вызывает функцию рассылки.
 3. Всем подписчикам отправляется сообщение с датой и именем вошедшего пользователя.
 4. Пользователь может отписаться командой `/stop`.
