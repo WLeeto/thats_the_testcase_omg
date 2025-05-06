@@ -1,5 +1,6 @@
 import logging
 import os
+from typing import Any
 
 import telebot
 
@@ -12,7 +13,12 @@ bot = telebot.TeleBot(TOKEN)
 
 
 @shared_task
-def notify_all_admin_login_task(login_time, username):
+def notify_all_admin_login_task(login_time: str, username: str) -> None:
+    """
+    Асинхронно отправляет уведомление о входе в админку всем подписчикам.
+    :param login_time: строка с датой и временем входа
+    :param username: имя пользователя, вошедшего в админку
+    """
     message = f"Дата входа: {login_time}\nИмя пользователя: {username}"
     for sub in Subscriber.objects.all():
         try:

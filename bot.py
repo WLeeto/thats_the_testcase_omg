@@ -15,8 +15,12 @@ TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 
-@bot.message_handler(commands=["start"])
-def subscribe(message):
+def subscribe(message: telebot.types.Message) -> None:
+    """
+    Обрабатывает команду /start: подписывает пользователя на уведомления.
+    Если уже подписан — обновляет никнейм.
+    :param message: объект сообщения Telegram
+    """
     chat_id = message.chat.id
     nickname = message.from_user.username or ""
     try:
@@ -27,8 +31,11 @@ def subscribe(message):
         bot.send_message(chat_id, "Вы уже подписаны. Никнейм обновлён.")
 
 
-@bot.message_handler(commands=["stop"])
-def unsubscribe(message):
+def unsubscribe(message: telebot.types.Message) -> None:
+    """
+    Обрабатывает команду /stop: отписывает пользователя от уведомлений.
+    :param message: объект сообщения Telegram
+    """
     chat_id = message.chat.id
     deleted, _ = Subscriber.objects.filter(chat_id=chat_id).delete()
     if deleted:
@@ -37,6 +44,9 @@ def unsubscribe(message):
         bot.send_message(chat_id, "Вы не были подписаны.")
 
 
+bot.message_handler(commands=["start"])(subscribe)
+bot.message_handler(commands=["stop"])(unsubscribe)
+
 if __name__ == "__main__":
     print("Бот запущен")
-    bot.infinity_polling()
+    bot.polling()
