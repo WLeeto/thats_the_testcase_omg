@@ -9,7 +9,6 @@ from notifier.models import Subscriber
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "admin_notifier.settings")
 django.setup()
 
-
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
@@ -22,7 +21,6 @@ def subscribe(message):
         Subscriber.objects.create(chat_id=chat_id, nickname=nickname)
         bot.send_message(chat_id, "Вы подписались на уведомления о входе в админку.")
     except IntegrityError:
-        # Обновляем никнейм, если пользователь уже есть
         Subscriber.objects.filter(chat_id=chat_id).update(nickname=nickname)
         bot.send_message(chat_id, "Вы уже подписаны. Никнейм обновлён.")
 
