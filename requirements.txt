@@ -1,0 +1,6 @@
+Django>=4.2
+pyTelegramBotAPI>=4.14.1
+pytest>=7.0.0
+pytest-cov>=4.0.0
+psycopg2-binary>=2.9.0
+celery[redis]>=5.3.0

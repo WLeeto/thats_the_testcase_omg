@@ -1,0 +1,136 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+media/
+staticfiles/
+
+# Environments
+.env
+.env.*
+.venv/
+venv/
+env/
+ENV/
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+
+# Pycharm
+.idea/
+*.iml
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# PostgreSQL
+*.sql
+*.dump
+pgdata/
+
+# Build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# System
+Thumbs.db
+Desktop.ini
+
+# Test & temp
+*.bak
+*.swp
+*.tmp
+*.orig
+*.old
+
+# Node (if ever used for frontend)
+node_modules/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Other
+*.sublime-workspace
+*.sublime-project
+
+# Local config
+*.local
+*.secret
+secrets.json
+
+# Pip-tools
+requirements*.txt~
+
+# Logs
+logs/
+*.log
+
+# Misc
+*.tgz
+*.gz
+*.zip
+*.tar
+*.rar
+
+# Ignore example envs but not the template
+!.env.example
+
+# Ignore database dumps
+*.dump
+*.backup
+
+# Ignore coverage reports
+.coverage
+.coverage.*
+
+# Ignore test output
+junit*.xml
+
+# Ignore pipenv
+Pipfile.lock
+Pipfile
+
+# Ignore poetry
+poetry.lock
+pyproject.toml
+
+# Ignore celery beat schedule
+celerybeat-schedule
+
+# Ignore migrations (optional, uncomment if you want to ignore generated migrations)
+# notifier/migrations/
+# admin_notifier/migrations/
