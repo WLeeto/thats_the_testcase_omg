@@ -1,13 +1,15 @@
 import os
 
 import django
-import telebot
-from django.db import IntegrityError
-
-from notifier.models import Subscriber
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "admin_notifier.settings")
+# Сетап джанги надо проводить до вызова бота иначе падает бот
 django.setup()
+
+import telebot  # noqa: E402
+from django.db import IntegrityError  # noqa: E402
+
+from notifier.models import Subscriber  # noqa: E402
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
